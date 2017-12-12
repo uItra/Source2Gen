@@ -3,12 +3,12 @@
 #include <set>
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "Schema.hpp"
 #include "SchemaSystem.hpp"
 
-class SchemaClassGenerator
-{
+class SchemaClassGenerator {
 public:
     SchemaClassGenerator(schema::CSchemaSystemTypeScope* typeScope);
     ~SchemaClassGenerator();
@@ -16,8 +16,7 @@ public:
     virtual std::string& Generate(const std::string& genFolder);
 
 public:
-    class Single
-    {
+    class Single {
     public:
         Single(schema::CSchemaClassInfo* classInfo, const std::string& prefix = "");
         Single(schema::CSchemaClassBinding* classBinding, const std::string& prefix = "");
@@ -69,5 +68,5 @@ private:
     std::vector<schema::CSchemaClassBinding*> m_classes;
 
     static std::unordered_map<std::string, std::string> s_typedefs;
-    static std::vector<std::string> s_knownTypes;
+    static std::unordered_set<std::string> s_knownTypes;
 };

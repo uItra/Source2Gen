@@ -3,14 +3,13 @@
 #include <string>
 #include <atomic>
 #include <vector>
+#include <thread>
 
-namespace schema
-{
+namespace schema {
     class CSchemaSystemTypeScope;
 }
 
-class Source2Gen
-{
+class Source2Gen {
 public:
     Source2Gen(const std::string& genFolder);
 
@@ -26,6 +25,6 @@ private:
 private:
     std::string m_genFolder;
 
-    std::atomic<int> m_numFinished;
+    std::vector<std::thread> m_threads;
     static std::vector<schema::CSchemaSystemTypeScope*> s_scopes;
 };
